@@ -37,11 +37,13 @@ namespace WSConvertisseur.Controllers
         public ActionResult<Devise> GetById(int id)
         {
             var devise = devises.FirstOrDefault(d => d.Id == id);
+
             if (devise == null)
             {
+                
                 return NotFound();
             }
-            return Ok(devise);
+            return devise;
         }
 
         /// <summary>

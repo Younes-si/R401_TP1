@@ -2,60 +2,31 @@
 {
     public class Devise
     {
-        int id;
-        string nomdevise;
-        double taux;
+        public int Id { get; set; }
+        public string? NomDevise { get; set; }
+        public double Taux { get; set; }
 
-        public Devise()
+        public Devise() { }
+
+        public Devise(int id, string nomDevise, double taux)
         {
+            Id = id;
+            NomDevise = nomDevise;
+            Taux = taux;
         }
 
-        public Devise(int id, string nomdevise, double taux)
+       
+        public override bool Equals(object? obj)
         {
-            this.Id = id;
-            this.Nomdevise = nomdevise;
-            this.Taux = taux;
+            return obj is Devise devise &&
+                   Id == devise.Id &&
+                   NomDevise == devise.NomDevise &&
+                   Taux == devise.Taux;
         }
 
-        public int Id
+        public override int GetHashCode()
         {
-            get
-            {
-                return this.id;
-            }
-
-            set
-            {
-                this.id = value;
-            }
+            return HashCode.Combine(Id, NomDevise, Taux);
         }
-
-        public string Nomdevise
-        {
-            get
-            {
-                return this.nomdevise;
-            }
-
-            set
-            {
-                this.nomdevise = value;
-            }
-        }
-
-        public double Taux
-        {
-            get
-            {
-                return this.taux;
-            }
-
-            set
-            {
-                this.taux = value;
-            }
-        }
-
-        // Je commente pour le commit, un autre
     }
 }
